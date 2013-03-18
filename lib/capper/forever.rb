@@ -91,7 +91,7 @@ namespace :forever do
     resp = capture "cd #{app_path} && #{prefix} #{forever_cmd} logs | grep #{main_js}"
     #logs = resp.split("\n")[2..-1].map{|l| l.split(" " ).last.gsub(/.\[3[5,9]m/,'')}
     logs = resp.split("\n").map{|l| l.split(" " ).last.gsub(/.\[3[5,9]m/,'')}
-    run "tail -n10 -f #{logs.join(" ")}"
+    stream "tail -n10 -f #{logs.join(" ")}"
   end
 end
 
