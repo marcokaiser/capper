@@ -24,7 +24,7 @@ namespace :npm do
     # use shared folder 
     run "mkdir -p #{shared_path}/node_modules"
     run "cp #{release_path}/package.json #{shared_path}"
-    run "cd #{shared_path} && #{prefix} #{fetch(:npm_cmd, "npm")} install #{(node_env == 'production') ? '--production' : ''} --loglevel warn"
+    run "cd #{shared_path} && #{prefix} #{fetch(:npm_cmd, "npm")} update #{(node_env == 'production') ? '--production' : ''} --loglevel warn"
     run "ln -s #{shared_path}/node_modules #{release_path}/node_modules"
   end
 
